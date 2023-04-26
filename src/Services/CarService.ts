@@ -28,6 +28,15 @@ class CarService {
     }
     return this.createCarDomain(car);
   }
+
+  async update(id: string, obj: Partial<ICar>) {
+    const updatedCar = await CarService.carODM.update(id, obj);
+    if (!updatedCar) {
+      return null;
+    }
+    
+    return this.createCarDomain(updatedCar);
+  }
 }
 
 export default CarService;
