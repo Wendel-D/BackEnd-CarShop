@@ -84,4 +84,19 @@ describe('Testes da rota /motorcycle', function () {
 
     expect(result).to.be.deep.equal(null);
   });
+
+  it('Verifica se é possível deletar uma moto', async function () {
+    sinon.stub(Model, 'create').resolves(newMotor);
+
+    const motorcycle = await service.create(motorInfo);
+
+    expect(motorcycle).to.be.deep.equal(newMotor);
+
+    sinon.stub(Model, 'findOne').resolves(newMotor);
+    sinon.stub(Model, 'findOneAndDelete').resolves(null);
+
+    const deletedMotorcycle = await service.delete('1');
+
+    expect(deletedMotorcycle).to.be.deep.equal(undefined);
+  });
 });

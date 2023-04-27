@@ -29,7 +29,7 @@ abstract class AbstractODM<T> {
     );
   }
 
-  async delete(id: string) {
+  async delete(id: string): Promise<T | null>{
     return this.model.findByIdAndDelete(id);
   }
 }

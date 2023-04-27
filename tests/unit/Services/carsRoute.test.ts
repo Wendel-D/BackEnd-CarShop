@@ -84,4 +84,19 @@ describe('Testes da rota /cars', function () {
 
     expect(result).to.be.deep.equal(null);
   });
+
+  it('Verifica se é possível deletar um carro', async function () {
+    sinon.stub(Model, 'create').resolves(newCar);
+
+    const car = await service.create(carInfo);
+
+    expect(car).to.be.deep.equal(newCar);
+
+    sinon.stub(Model, 'findOne').resolves(newCar);
+    sinon.stub(Model, 'findOneAndDelete').resolves(null);
+
+    const deletedCar = await service.delete('1');
+
+    expect(deletedCar).to.be.deep.equal(undefined);
+  });
 });

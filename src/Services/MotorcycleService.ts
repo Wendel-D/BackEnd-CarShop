@@ -48,6 +48,10 @@ class MotorcycleService {
     
     return this.createMotorDomain(updatedMotor);
   }
+
+  async delete(id: string) {
+    await MotorcycleService.motorcycleODM.delete(id);
+  }
 }
 
 export default MotorcycleService;
