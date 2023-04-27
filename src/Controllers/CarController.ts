@@ -2,6 +2,9 @@ import { NextFunction, Request, Response } from 'express';
 import CarService from '../Services/CarService';
 import ICar from '../Interfaces/ICar';
 
+const NOT_FOUND = { message: 'Car not found' };
+const INVALID_ID = { message: 'Invalid mongo id' };
+
 class CarController {
   private req: Request;
   private res: Response;
@@ -48,11 +51,11 @@ class CarController {
     try {
       const car = await this.service.findById(id);
       if (!car) {
-        return this.res.status(404).json({ message: 'Car not found' });
+        return this.res.status(404).json(NOT_FOUND);
       }
       return this.res.status(200).json(car);
     } catch (error) {
-      this.res.status(422).json({ message: 'Invalid mongo id' });
+      this.res.status(422).json(INVALID_ID);
     }
   }
 
@@ -70,12 +73,12 @@ class CarController {
     try {
       const car = await this.service.findById(id);
       if (!car) {
-        return this.res.status(404).json({ message: 'Car not found' });
+        return this.res.status(404).json(NOT_FOUND);
       }
       const updateComplete = await this.service.update(id, carInfos);
       return this.res.status(200).json(updateComplete);
     } catch (error) {
-      return this.res.status(422).json({ message: 'Invalid mongo id' });
+      return this.res.status(422).json(INVALID_ID);
     }
   }
 
@@ -84,12 +87,12 @@ class CarController {
     try {
       const car = await this.service.findById(id);
       if (!car) {
-        return this.res.status(404).json({ message: 'Car not found' });
+        return this.res.status(404).json(NOT_FOUND);
       }
       await this.service.delete(id);
       return this.res.status(204).end();
     } catch (error) {
-      return this.res.status(422).json({ message: 'Invalid mongo id' });
+      return this.res.status(422).json(INVALID_ID);
     }
   }
 }

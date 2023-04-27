@@ -2,6 +2,7 @@ import { Router } from 'express';
 import MotorcycleController from '../Controllers/MotorcycleController';
 
 const routes = Router();
+const ROTA = '/motorcycles/:id';
 
 routes.post(
   '/motorcycles',
@@ -14,17 +15,17 @@ routes.get(
 );
 
 routes.get(
-  '/motorcycles/:id',
+  ROTA,
   (req, res, next) => new MotorcycleController(req, res, next).findById(),
 );
 
 routes.put(
-  '/motorcycles/:id',
+  ROTA,
   (req, res, next) => new MotorcycleController(req, res, next).update(),
 );
 
 routes.delete(
-  '/motorcycles/:id',
+  ROTA,
   (req, res, next) => new MotorcycleController(req, res, next).delete(),
 );
 
