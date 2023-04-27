@@ -5,7 +5,7 @@ import Car from '../../../src/Domains/Car';
 import ICar from '../../../src/Interfaces/ICar';
 import CarService from '../../../src/Services/CarService';
 
-const RESULT_ERROR = {"message": "Invalid mongo id"};
+// const RESULT_ERROR = { message: 'Invalid mongo id' };
 
 describe('Testes da rota /cars', function () {
   it('Verifica se um carro é criado com sucesso', async function () {
@@ -51,14 +51,12 @@ describe('Testes da rota /cars', function () {
   });
 
   it('Verifica se a busca por um ID inválido retorna erro', async function () {
-    
-    const carOutput = {"message": "Invalid mongo id"}
+    const carOutput = { message: 'Invalid mongo id' };
     sinon.stub(Model, 'findById').resolves(carOutput);
-
 
     const service = new CarService();
     const result = await service.findById('XXXXXXXXXXXX');
-        console.log(result);
+    console.log(result);
         
     expect(result).to.be.equal(carOutput);
   });

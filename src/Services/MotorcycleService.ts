@@ -6,16 +6,18 @@ class MotorcycleService {
   static motorcycleODM = new MotorcycleODM();
 
   private createMotorDomain(motocycle: IMotorcycle | null): Motorcycle | null {
-    if (motocycle) { return new Motorcycle({
-      "id": motocycle.id,
-      "model": motocycle.model,
-      "year": motocycle.year,
-      "color": motocycle.color,
-      "status": motocycle.status,
-      "buyValue": motocycle.buyValue,
-      "category": motocycle.category,
-      "engineCapacity": motocycle.engineCapacity,
-    }); }
+    if (motocycle) {
+      return new Motorcycle({
+        id: motocycle.id,
+        model: motocycle.model,
+        year: motocycle.year,
+        color: motocycle.color,
+        status: motocycle.status,
+        buyValue: motocycle.buyValue,
+        category: motocycle.category,
+        engineCapacity: motocycle.engineCapacity,
+      }); 
+    }
     return null;
   }
 

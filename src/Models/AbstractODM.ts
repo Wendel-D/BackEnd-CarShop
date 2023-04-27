@@ -1,7 +1,7 @@
-import { Model, Schema, UpdateQuery, model, models } from "mongoose";
+import { Model, Schema, UpdateQuery, model, models } from 'mongoose';
 
-abstract class AbstractODM<T>{
-  protected model: Model<T>
+abstract class AbstractODM<T> {
+  protected model: Model<T>;
   private schema: Schema;
   protected modelName: string;
 

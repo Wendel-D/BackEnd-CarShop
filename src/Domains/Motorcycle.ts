@@ -1,5 +1,5 @@
-import IMotorcycle from "../Interfaces/IMotorcycle";
-import Vehicle from "./Vehicle";
+import IMotorcycle from '../Interfaces/IMotorcycle';
+import Vehicle from './Vehicle';
 
 class Motorcycle extends Vehicle {
   private category: string;

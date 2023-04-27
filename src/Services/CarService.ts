@@ -8,14 +8,14 @@ class CarService {
   private createCarDomain(car: ICar | null): Car | null {
     if (car) {
       return new Car({
-        "id": car.id,
-        "model": car.model,
-        "year": car.year,
-        "color": car.color,
-        "status": car.status,
-        "buyValue": car.buyValue,
-        "doorsQty": car.doorsQty,
-        "seatsQty": car.seatsQty,
+        id: car.id,
+        model: car.model,
+        year: car.year,
+        color: car.color,
+        status: car.status,
+        buyValue: car.buyValue,
+        doorsQty: car.doorsQty,
+        seatsQty: car.seatsQty,
       });
     }
     return null;
@@ -30,7 +30,7 @@ class CarService {
   async findAll() {
     const cars = await CarService.carODM.findAll();
     const carsMap = cars.map((e) => this.createCarDomain(e));
-    console.log('RETORNOOOOOO',carsMap);
+    console.log('RETORNOOOOOO', carsMap);
     return carsMap;
   }
 
