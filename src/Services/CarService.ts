@@ -30,7 +30,6 @@ class CarService {
   async findAll() {
     const cars = await CarService.carODM.findAll();
     const carsMap = cars.map((e) => this.createCarDomain(e));
-    console.log('RETORNOOOOOO', carsMap);
     return carsMap;
   }
 
